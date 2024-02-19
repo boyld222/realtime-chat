@@ -61,6 +61,7 @@ export const AuthForm = () => {
             label="Password"
             register={register}
             errors={errors}
+            type="password"
           />
           <div className="">
             <Button fullWidth type="submit" disabled={loading}>
