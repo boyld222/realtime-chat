@@ -22,6 +22,7 @@ const UserBox: FunctionComponent<UserBoxProps> = ({ data }) => {
       .then((data) => {
         router.push(`/conversations/${data.data.id}`);
       })
+      .catch((err) => console.log(err))
       .finally(() => setisLoading(false));
   }, [data, router]);
 
