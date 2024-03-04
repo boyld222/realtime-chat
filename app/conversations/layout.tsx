@@ -1,22 +1,26 @@
-import { FunctionComponent, ReactNode } from "react";
+import getConversation from "../actions/getConversation";
+import getUsers from "../actions/getUsers";
 import Sidebar from "../components/Sidebar/Sidebar";
-import ConversationList from "../users/components/components/ConversationList";
+import ConversationList from "./components/ConversationList";
 
-interface ConversationsLayoutProps {
-  children: ReactNode;
-}
+export default async function ConversationsLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const conversations = await getConversation();
+  const users = await getUsers();
 
-const ConversationsLayout: FunctionComponent<
-  ConversationsLayoutProps
-> = async ({ children }) => {
   return (
     <Sidebar>
       <div className="h-full">
-        <ConversationList initialItems={[]} />
+        <ConversationList
+          users={users}
+          title="Messages"
+          initialItems={conversations}
+        />
         {children}
       </div>
     </Sidebar>
   );
-};
-
-export default ConversationsLayout;
+}
