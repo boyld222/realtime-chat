@@ -31,7 +31,7 @@ const ConversationBox: FunctionComponent<ConversationBoxProps> = ({
 
   const lastMessage = useMemo(() => {
     const messages = data.message || [];
-    return messages[messages.length];
+    return messages[messages.length - 1];
   }, [data.message]);
 
   const userEmail = useMemo(() => {
@@ -52,7 +52,6 @@ const ConversationBox: FunctionComponent<ConversationBoxProps> = ({
     if (lastMessage?.body) return lastMessage.body;
     return "Started a conversation";
   }, [lastMessage]);
-
   return (
     <div
       onClick={handleClick}

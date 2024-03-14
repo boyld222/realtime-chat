@@ -13,12 +13,14 @@ export default async function ConversationsLayout({
 
   return (
     <div className="h-full">
-      <ConversationList
-        users={users}
-        title="Messages"
-        initialItems={conversations}
-      />
-      {children}
+      <Sidebar>
+        <ConversationList
+          users={users}
+          title="Messages"
+          initialItems={conversations}
+        />
+        {children}
+      </Sidebar>
     </div>
   );
 }

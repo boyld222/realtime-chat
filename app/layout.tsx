@@ -22,7 +22,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <AuthContext>
           <ToasterContext />
-          <Sidebar>{children}</Sidebar>
+          {children}
         </AuthContext>
       </body>
     </html>
