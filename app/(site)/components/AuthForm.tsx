@@ -111,8 +111,17 @@ export const AuthForm = () => {
             type="password"
           />
           <div className="">
-            <Button fullWidth type="submit" disabled={loading}>
-              {variant === "LOGIN" ? "Sign in" : "Sign up"}
+            <Button
+              fullWidth
+              type="submit"
+              disabled={loading}
+              isLoading={loading}
+            >
+              {variant === "LOGIN"
+                ? loading
+                  ? "Logging in..."
+                  : "Login"
+                : "Sign up"}
             </Button>
           </div>
           <div className="mt-6">

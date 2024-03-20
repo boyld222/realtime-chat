@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
-import ToasterContext from "./context/ToasterContext";
+import { Suspense } from "react";
 import AuthContext from "./context/AuthContext";
-import Sidebar from "./components/Sidebar/Sidebar";
+import ToasterContext from "./context/ToasterContext";
+import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,7 +22,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <AuthContext>
           <ToasterContext />
-          {children}
+          <Suspense fallback={<div>Loading</div>}>{children}</Suspense>
         </AuthContext>
       </body>
     </html>

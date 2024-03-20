@@ -1,5 +1,7 @@
 "use client";
 import clsx from "clsx";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
+
 interface ButtonProps {
   type?: "button" | "submit" | "reset" | undefined;
   fullWidth?: boolean;
@@ -9,6 +11,7 @@ interface ButtonProps {
   danger?: boolean;
   disabled?: boolean;
   className?: string;
+  isLoading?: boolean;
 }
 
 export const Button = (props: ButtonProps) => {
@@ -21,6 +24,7 @@ export const Button = (props: ButtonProps) => {
     danger,
     disabled,
     className,
+    isLoading,
   } = props;
   return (
     <button
@@ -31,7 +35,8 @@ export const Button = (props: ButtonProps) => {
         `
         flex
         justify-center
-         rounded-md px-3 py-2 text-sm font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2
+        rounded-md px-3 py-2 text-sm font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2
+        items-center gap-2
     `,
         className && className,
         disabled && " opacity-50 cursor-default",
@@ -44,6 +49,7 @@ export const Button = (props: ButtonProps) => {
           "bg-sky-500 hover:bg-sky-600 focus-visible:outline-sky-600"
       )}
     >
+      {isLoading && <AiOutlineLoading3Quarters className="animate-spin" />}
       {children}
     </button>
   );
